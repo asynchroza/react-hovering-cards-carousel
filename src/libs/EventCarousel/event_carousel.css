@@ -1,0 +1,44 @@
+.event-carousel-container {
+    width: 80%;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+.event-carousel-map{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.event-carousel-map.moving {
+    overflow: visible;
+}
+
+.arrow {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    left: -20px;
+    top: 50%;
+}
+
+.arrow.right {
+    position: absolute;
+    right: -20px !important;
+    left: auto;
+    transform: rotate(180deg);
+}
+
+.event-card-container {
+    background-color: blue;
+    margin: 2rem;
+    border-radius: 2rem;
+}
+
+.event-card-images{
+    width:  200px;
+    height: 200px;
+    object-fit: cover;
+}
