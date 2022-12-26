@@ -4,7 +4,7 @@ import { Carousel } from "./libs/Carousel/Carousel";
 import axios from "axios";
 import { Event } from "./libs/Carousel/card_definitions";
 
-function EventsCarouselTest() {
+function TestCarousel() {
   const [data, setData] = useState([new Event()]);
 
   useEffect(() => {
@@ -37,4 +37,4 @@ function EventsCarouselTest() {
   return <div className="App">{<Carousel cards={data} />}</div>;
 }
 
-export default EventsCarouselTest;
+export default TestCarousel;

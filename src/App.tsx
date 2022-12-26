@@ -1,10 +1,10 @@
 import "./App.css";
-import EventsTest from "./Test__Carousel";
+import TestCarousel from "./Test__Carousel";
 
 function App() {
     return (
         <>
-        <EventsTest/>
+        <TestCarousel/>
         </>
     )
 }
