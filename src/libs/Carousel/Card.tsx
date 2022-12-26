@@ -1,8 +1,8 @@
 import React from "react";
-import { Event, Article } from "../ObjectDefinitions";
+import { Event, Article, Custom } from "./card_definitions";
 
 type Props = {
-  prop: Event | Article;
+  prop: Event | Article | Custom;
 };
 
 export const Card = ({ prop }: Props) => {

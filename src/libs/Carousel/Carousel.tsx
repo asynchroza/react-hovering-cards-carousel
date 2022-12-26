@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { Event } from "../ObjectDefinitions";
+import React, { useRef } from "react";
+import { Event, Article, Custom } from "./card_definitions";
 import "./carousel.css";
 import { Card } from "./Card";
 import { FaArrowCircleLeft } from "react-icons/fa";
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { SLIDING_PIXELS, CARDS_MARGIN } from "./constants";
 
 type Props = {
-  cards: Event[];
+  cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
   backgroundColor?: string;
 };

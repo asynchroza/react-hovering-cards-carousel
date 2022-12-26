@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Carousel } from "./libs/Carousel/Carousel";
 import axios from "axios";
-import { Event } from "./libs/ObjectDefinitions";
+import { Event } from "./libs/Carousel/card_definitions";
 
 function EventsCarouselTest() {
   const [data, setData] = useState([new Event()]);

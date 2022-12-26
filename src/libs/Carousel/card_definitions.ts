@@ -27,3 +27,11 @@ export class Article {
         this.title = title;
     }
 }
+
+export class Custom {
+    title: string;
+
+    constructor(title: string = ""){
+        this.title = title;
+    }
+}
