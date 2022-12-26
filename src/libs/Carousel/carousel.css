@@ -1,9 +1,10 @@
 :root {
   --SLIDING_PIXELS: 240px;
+  --NUMBER_OF_CARDS: 4;
 }
 
 .event-carousel-container {
-  width: calc(var(--SLIDING_PIXELS) * 3);
+  width: calc(var(--SLIDING_PIXELS) * var(--NUMBER_OF_CARDS));
   display: flex;
   flex-direction: row;
   position: relative;

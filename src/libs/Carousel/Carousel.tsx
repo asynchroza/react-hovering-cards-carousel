@@ -5,6 +5,7 @@ import { Card } from "./Card";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useState } from "react";
 import { SLIDING_PIXELS, CARDS_MARGIN } from "./constants";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   cards: Event[] | Article[] | Custom[];
@@ -24,14 +25,18 @@ export const Carousel = ({
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [animation, setAnimation] = useState("none");
+
   const [leftButton, setLeftButton] = useState({
     css: "arrow disabled",
     canClick: false,
   });
+
   const [rightButton, setRightButton] = useState({
     css: "arrow right",
     canClick: true,
   });
+
+  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
   const animationRunning = useRef(false);
 
@@ -52,7 +57,10 @@ export const Carousel = ({
         animationRunning.current = false;
       }, 750);
 
-      if (-position >= SLIDING_WINDOW_LENGTH + SLIDING_PIXELS) {
+      if (
+        (-position >= SLIDING_WINDOW_LENGTH + SLIDING_PIXELS && !isDesktop) ||
+        (-position >= SLIDING_PIXELS && isDesktop)
+      ) {
         setRightButton({ css: "arrow right disabled", canClick: false });
       } else {
         setRightButton({ css: "arrow right", canClick: true });
