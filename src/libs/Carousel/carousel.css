@@ -3,7 +3,7 @@
 }
 
 .event-carousel-container {
-  width: calc(var(--SLIDING_PIXELS)*3);
+  width: calc(var(--SLIDING_PIXELS) * 3);
   display: flex;
   flex-direction: row;
   position: relative;
@@ -11,7 +11,7 @@
 
 @media only screen and (max-width: 1000px) {
   .event-carousel-container {
-    width: var(--SLIDING_PIXELS)
+    width: var(--SLIDING_PIXELS);
   }
 }
 
@@ -55,6 +55,11 @@
   background-color: blue;
   margin: 20px;
   border-radius: 2rem;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
 
 .event-card-images {
