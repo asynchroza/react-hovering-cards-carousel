@@ -3,10 +3,16 @@
 }
 
 .event-carousel-container {
-  width: 80%;
+  width: calc(var(--SLIDING_PIXELS)*3);
   display: flex;
   flex-direction: row;
   position: relative;
+}
+
+@media only screen and (max-width: 1000px) {
+  .event-carousel-container {
+    width: var(--SLIDING_PIXELS)
+  }
 }
 
 .event-carousel-map {
