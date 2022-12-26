@@ -28,17 +28,12 @@ export const EventCarousel = ({
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
     setPosition(position - SLIDING_PIXELS);
-    changeAnimationState(SlidingAnimation.Left);
+    setAnimation(SlidingAnimation.Left)
   };
 
   const slideRight = (event: React.MouseEvent<SVGAElement>) => {
     setPosition(position + SLIDING_PIXELS);
-    changeAnimationState(SlidingAnimation.Right);
-  };
-
-  const changeAnimationState = (animationName: SlidingAnimation) => {
-    setAnimation(animationName);
-    console.log(animation);
+    setAnimation(SlidingAnimation.Right)
   };
 
   return (
