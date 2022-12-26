@@ -3,6 +3,7 @@ import { Event } from "../ObjectDefinitions";
 
 type Props = {
   event: Event;
+
 };
 
 export const EventCard = ({ event }: Props) => {

@@ -30,11 +30,11 @@ function EventsCarouselTest() {
         });
       }
 
-      setData(events)
+      setData(events);
     });
   }, []);
 
-  return <div className="App">{<EventCarousel events={data}/>}</div>;
+  return <div className="App">{<EventCarousel events={data} />}</div>;
 }
 
 export default EventsCarouselTest;
