@@ -1,3 +1,7 @@
+:root {
+    --SLIDING_PIXELS: 240px;
+}
+
 .event-carousel-container {
     width: 80%;
     display: flex;
@@ -35,7 +39,7 @@
 
 .event-card-container {
     background-color: blue;
-    margin: 2rem;
+    margin: 20px;
     border-radius: 2rem;
 }
 
@@ -47,7 +51,7 @@
 
 @keyframes slideLeft {
     from {
-        transform: translateX(100px)
+        transform: translateX(var(--SLIDING_PIXELS))
     } to {
         transform: translateX(0px)
     }
@@ -55,7 +59,7 @@
 
 @keyframes slideRight {
     from {
-        transform: translateX(-100px)
+        transform: translateX(calc(var(--SLIDING_PIXELS) * -1))
     } to {
         transform: translateX(0px)
     }

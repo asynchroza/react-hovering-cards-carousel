@@ -24,7 +24,7 @@ export const EventCarousel = ({
   const [position, setPosition] = useState(0);
   const [animation, setAnimation] = useState("none");
 
-  const SLIDING_PIXELS = 100;
+  const SLIDING_PIXELS = 240; // should be changed in css animations as well
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
     setPosition(position - SLIDING_PIXELS);
