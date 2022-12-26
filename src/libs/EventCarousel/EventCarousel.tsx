@@ -43,7 +43,7 @@ export const EventCarousel = ({
     >
       <FaArrowCircleLeft
         className="arrow"
-        onClick={slideLeft}
+        onClick={slideRight}
         style={{ color: `${buttonColor}` }}
       />
       <div className="event-carousel-map">
@@ -59,7 +59,7 @@ export const EventCarousel = ({
       </div>
       <FaArrowCircleLeft
         className="arrow right"
-        onClick={slideRight}
+        onClick={slideLeft}
         style={{ color: `${buttonColor}` }}
       />
     </div>
