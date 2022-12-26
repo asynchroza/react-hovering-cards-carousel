@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Event } from "../ObjectDefinitions";
-import "./event_carousel.css";
+import "./carousel.css";
 import { Card } from "./Card";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useState } from "react";
@@ -33,14 +33,24 @@ export const Carousel = ({
     canClick: true,
   });
 
+  const animationRunning = useRef(false);
+
   const SLIDING_WINDOW_LENGTH =
     (cards.length * (SLIDING_PIXELS + 2 * CARDS_MARGIN)) / 2; // in pixels
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
+    if (animationRunning.current) return;
+
     if (rightButton.canClick) {
+      animationRunning.current = true;
       setPosition(position - SLIDING_PIXELS);
       setAnimation(SlidingAnimation.Left);
+
       setLeftButton({ css: "arrow", canClick: true });
+
+      setTimeout(() => {
+        animationRunning.current = false;
+      }, 750);
 
       if (-position >= SLIDING_WINDOW_LENGTH + SLIDING_PIXELS) {
         setRightButton({ css: "arrow right disabled", canClick: false });
@@ -51,11 +61,18 @@ export const Carousel = ({
   };
 
   const slideRight = (event: React.MouseEvent<SVGAElement>) => {
+    if (animationRunning.current) return;
+
     if (leftButton.canClick) {
+      animationRunning.current = true;
       setPosition(position + SLIDING_PIXELS);
       setAnimation(SlidingAnimation.Right);
 
       setRightButton({ css: "arrow right", canClick: true });
+
+      setTimeout(() => {
+        animationRunning.current = false;
+      }, 750);
 
       if (-position - (SLIDING_PIXELS + CARDS_MARGIN * 2) <= 0) {
         setLeftButton({ css: "arrow disabled", canClick: false });
