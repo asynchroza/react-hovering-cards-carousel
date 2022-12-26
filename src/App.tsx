@@ -1,11 +1,12 @@
-import './App.css'
+import "./App.css";
+import EventsTest from "./EventsCarouselTest";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>WORKING</h1>
-    </div>
-  )
+    return (
+        <>
+        <EventsTest/>
+        </>
+    )
 }
 
-export default App
+export default App;
