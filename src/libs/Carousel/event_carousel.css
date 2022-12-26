@@ -1,0 +1,76 @@
+:root {
+  --SLIDING_PIXELS: 240px;
+}
+
+.event-carousel-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.event-carousel-map {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.event-carousel-map.moving {
+  overflow: visible;
+  /* transform: translateX(0px) */
+}
+
+.arrow {
+  position: absolute;
+  height: 40px;
+  width: 40px;
+  left: -20px;
+  top: 50%;
+  z-index: 6;
+}
+
+.arrow.right {
+  position: absolute;
+  right: -20px !important;
+  left: auto;
+  transform: rotate(180deg);
+}
+
+.arrow.disabled {
+  color: gray !important;
+}
+
+.arrow.right.disabled {
+  color: gray !important;
+}
+
+.card-container {
+  background-color: blue;
+  margin: 20px;
+  border-radius: 2rem;
+}
+
+.event-card-images {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(var(--SLIDING_PIXELS));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(calc(var(--SLIDING_PIXELS) * -1));
+  }
+  to {
+    transform: translateX(0px);
+  }
+}

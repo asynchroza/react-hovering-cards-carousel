@@ -1,5 +1,5 @@
 import "./App.css";
-import EventsTest from "./EventsCarouselTest";
+import EventsTest from "./Test__Carousel";
 
 function App() {
     return (

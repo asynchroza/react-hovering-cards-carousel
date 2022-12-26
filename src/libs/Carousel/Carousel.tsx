@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { Event } from "../ObjectDefinitions";
 import "./event_carousel.css";
-import { EventCard } from "./EventCard";
+import { Card } from "./Card";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useState } from "react";
-import { SLIDING_PIXELS, CARDS_MARGIN } from "./Constants";
+import { SLIDING_PIXELS, CARDS_MARGIN } from "./constants";
 
 type Props = {
-  events: Event[];
+  cards: Event[];
   buttonColor?: string;
   backgroundColor?: string;
 };
@@ -17,13 +17,8 @@ enum SlidingAnimation {
   Right = "slideRight 1s",
 }
 
-enum Button {
-  Left,
-  Right,
-}
-
-export const EventCarousel = ({
-  events,
+export const Carousel = ({
+  cards,
   buttonColor = "black",
   backgroundColor = "yellow",
 }: Props) => {
@@ -39,7 +34,7 @@ export const EventCarousel = ({
   });
 
   const SLIDING_WINDOW_LENGTH =
-    (events.length * (SLIDING_PIXELS + 2 * CARDS_MARGIN)) / 2; // in pixels
+    (cards.length * (SLIDING_PIXELS + 2 * CARDS_MARGIN)) / 2; // in pixels
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
     if (rightButton.canClick) {
@@ -86,8 +81,8 @@ export const EventCarousel = ({
           style={{ left: `${position}px`, animation: animation }}
           key={Math.random()}
         >
-          {events.map((event, index) => (
-            <EventCard event={event} key={index} />
+          {cards.map((card, index) => (
+            <Card prop={card} key={index} />
           ))}
         </div>
       </div>

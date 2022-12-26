@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { EventCarousel } from "./libs/EventCarousel/EventCarousel";
+import { Carousel } from "./libs/Carousel/Carousel";
 import axios from "axios";
 import { Event } from "./libs/ObjectDefinitions";
 
@@ -34,7 +34,7 @@ function EventsCarouselTest() {
     });
   }, []);
 
-  return <div className="App">{<EventCarousel events={data} />}</div>;
+  return <div className="App">{<Carousel cards={data} />}</div>;
 }
 
 export default EventsCarouselTest;
