@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Event } from "../ObjectDefinitions";
 import "./event_carousel.css";
 import { EventCard } from "./EventCard";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useState } from "react";
+import { SLIDING_PIXELS, CARDS_MARGIN } from "./Constants";
 
 type Props = {
   events: Event[];
@@ -16,6 +17,11 @@ enum SlidingAnimation {
   Right = "slideRight 1s",
 }
 
+enum Button {
+  Left,
+  Right,
+}
+
 export const EventCarousel = ({
   events,
   buttonColor = "black",
@@ -23,17 +29,45 @@ export const EventCarousel = ({
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [animation, setAnimation] = useState("none");
+  const [leftButton, setLeftButton] = useState({
+    css: "arrow disabled",
+    canClick: false,
+  });
+  const [rightButton, setRightButton] = useState({
+    css: "arrow right",
+    canClick: true,
+  });
 
-  const SLIDING_PIXELS = 240; // should be changed in css animations as well
+  const SLIDING_WINDOW_LENGTH =
+    (events.length * (SLIDING_PIXELS + 2 * CARDS_MARGIN)) / 2; // in pixels
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
-    setPosition(position - SLIDING_PIXELS);
-    setAnimation(SlidingAnimation.Left)
+    if (rightButton.canClick) {
+      setPosition(position - SLIDING_PIXELS);
+      setAnimation(SlidingAnimation.Left);
+      setLeftButton({ css: "arrow", canClick: true });
+
+      if (-position >= SLIDING_WINDOW_LENGTH + SLIDING_PIXELS) {
+        setRightButton({ css: "arrow right disabled", canClick: false });
+      } else {
+        setRightButton({ css: "arrow right", canClick: true });
+      }
+    }
   };
 
   const slideRight = (event: React.MouseEvent<SVGAElement>) => {
-    setPosition(position + SLIDING_PIXELS);
-    setAnimation(SlidingAnimation.Right)
+    if (leftButton.canClick) {
+      setPosition(position + SLIDING_PIXELS);
+      setAnimation(SlidingAnimation.Right);
+
+      setRightButton({ css: "arrow right", canClick: true });
+
+      if (-position - (SLIDING_PIXELS + CARDS_MARGIN * 2) <= 0) {
+        setLeftButton({ css: "arrow disabled", canClick: false });
+      } else {
+        setLeftButton({ css: "arrow", canClick: true });
+      }
+    }
   };
 
   return (
@@ -42,7 +76,7 @@ export const EventCarousel = ({
       style={{ backgroundColor: `${backgroundColor}` }}
     >
       <FaArrowCircleLeft
-        className="arrow"
+        className={leftButton.css}
         onClick={slideRight}
         style={{ color: `${buttonColor}` }}
       />
@@ -58,7 +92,7 @@ export const EventCarousel = ({
         </div>
       </div>
       <FaArrowCircleLeft
-        className="arrow right"
+        className={rightButton.css}
         onClick={slideLeft}
         style={{ color: `${buttonColor}` }}
       />

@@ -37,6 +37,14 @@
     transform: rotate(180deg);
 }
 
+.arrow.disabled {
+    color: gray !important;
+}
+
+.arrow.right.disabled {
+    color: gray !important;
+}
+
 .event-card-container {
     background-color: blue;
     margin: 20px;
