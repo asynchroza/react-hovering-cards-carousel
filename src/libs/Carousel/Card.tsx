@@ -12,11 +12,17 @@ export const Card = ({ prop }: Props) => {
         <img src={prop.image} className="event-card-images" />
       </div>
     );
+  } else if (prop instanceof Article) {
+    return (
+      <div className="card-container">
+        <h1>WORKING</h1>
+      </div>
+    );
   } else {
     return (
       <div className="card-container">
         <h1>WORKING</h1>
       </div>
-    )
+    );
   }
 };
