@@ -1,9 +1,6 @@
-### Generate declaration files ([Github Issue](https://github.com/vitejs/vite/issues/2049)):
-```shell
-tsc lib/index.ts --declaration --emitDeclarationOnly --jsx react --esModuleInterop --outDir dist
-```
+# React Hovering Cards Carousel (TypeScript)
 
-### Build library/package: 
-```shell
-vite build
-```
+## How to use: 
+
+
+## Types:
