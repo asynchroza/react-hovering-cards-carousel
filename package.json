@@ -1,8 +1,19 @@
 {
-  "name": "package.json",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
+  "name": "react-hovering-cards-carousel",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/react-hovering-cards-carousel.umd.cjs",
+  "module": "./dist/react-hovering-cards-carousel.js",
+  "exports": {
+    ".": {
+      "import": "./dist/react-hovering-cards-carousel.js",
+      "require": "./dist/react-hovering-cards-carousel.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,6 +27,7 @@
     "react-responsive": "^9.0.2"
   },
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
