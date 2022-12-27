@@ -9,7 +9,7 @@ export const Card = ({ prop }: Props) => {
   if (prop instanceof Event) {
     return (
       <div className="card-container">
-        <img src={prop.image} className="event-card-images" />
+        <img src={prop.image} className="card-images" />
       </div>
     );
   } else if (prop instanceof Article) {

@@ -3,7 +3,7 @@
   --NUMBER_OF_CARDS: 4;
 }
 
-.event-carousel-container {
+.carousel-container {
   width: calc(var(--SLIDING_PIXELS) * var(--NUMBER_OF_CARDS));
   display: flex;
   flex-direction: row;
@@ -11,19 +11,19 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .event-carousel-container {
+  .carousel-container {
     width: var(--SLIDING_PIXELS);
   }
 }
 
-.event-carousel-map {
+.carousel-map {
   display: flex;
   position: relative;
   flex-direction: row;
   overflow: hidden;
 }
 
-.event-carousel-map.moving {
+.carousel-map.moving {
   overflow: visible;
   /* transform: translateX(0px) */
 }
@@ -63,7 +63,7 @@
   -o-user-select: none;
 }
 
-.event-card-images {
+.card-images {
   width: 200px;
   height: 200px;
   object-fit: cover;

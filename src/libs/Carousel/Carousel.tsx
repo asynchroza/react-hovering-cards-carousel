@@ -93,7 +93,7 @@ export const Carousel = ({
 
   return (
     <div
-      className="event-carousel-container"
+      className="carousel-container"
       style={{ backgroundColor: `${backgroundColor}` }}
     >
       <FaArrowCircleLeft
@@ -101,9 +101,9 @@ export const Carousel = ({
         onClick={slideRight}
         style={{ color: `${buttonColor}` }}
       />
-      <div className="event-carousel-map">
+      <div className="carousel-map">
         <div
-          className="event-carousel-map moving"
+          className="carousel-map moving"
           style={{ left: `${position}px`, animation: animation }}
           key={Math.random()}
         >
