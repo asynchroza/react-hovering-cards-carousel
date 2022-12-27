@@ -34,7 +34,7 @@ function TestCarousel() {
     });
   }, []);
 
-  return <div className="App">{<Carousel cards={data} />}</div>;
+  return <div className="App">{<Carousel cards={data} backgroundColor={"white"}/>}</div>;
 }
 
 export default TestCarousel;
