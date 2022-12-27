@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Carousel } from "./libs/Carousel/Carousel";
 import axios from "axios";
-import { Event } from "./libs/Carousel/card_definitions";
+import { Article, Event } from "./libs/Carousel/card_definitions";
 
 function TestCarousel() {
-  const [data, setData] = useState([new Event()]);
+  const [events, setEvents] = useState([new Event()]);
+  const [articles, setArticles] = useState([new Article()]);
 
   useEffect(() => {
     axios({
@@ -30,11 +31,44 @@ function TestCarousel() {
         });
       }
 
-      setData(events);
+      setEvents(events);
     });
   }, []);
 
-  return <div className="App">{<Carousel cards={data} backgroundColor={"white"}/>}</div>;
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://dev.thehub-aubg.com/api/article",
+    }).then((res) => {
+      let resdata: Array<unknown> = res.data.data.data;
+
+      let articles: Array<Article> = [];
+
+      if (resdata) {
+        resdata.forEach((element: any) => {
+          articles.push(
+            new Article(
+              element.title, 
+              element.author, 
+              element.mediumlink, 
+              element.banner
+            )
+          );
+        });
+      }
+
+      setArticles(articles);
+    });
+  }, []);
+
+  console.log(articles)
+
+  return (
+    <div className="App">
+      <Carousel cards={events} backgroundColor={"white"} />
+      <Carousel cards={articles} />
+    </div>
+  );
 }
 
 export default TestCarousel;

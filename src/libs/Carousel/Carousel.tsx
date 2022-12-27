@@ -1,8 +1,8 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Event, Article, Custom } from "./card_definitions";
 import "./carousel.css";
 import { Card } from "./Card";
-import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleLeft, FaCalculator } from "react-icons/fa";
 import { useState } from "react";
 import { SLIDING_PIXELS, CARDS_MARGIN } from "./constants";
 import { useMediaQuery } from "react-responsive";
@@ -28,7 +28,23 @@ export const Carousel = ({
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
-  const [currentIndex, setCurrentIndex] = useState(isDesktop ? 3 : 0); // starts with 4 images
+  const getStartingIndex = () => {
+    if (isDesktop) {
+      if (cards.length <= 3) {
+        return 0;
+      } else return 3;
+    }
+
+    return 0;
+  };
+
+  const hasLessCards = () => {
+    if(cards.length <= 3){
+      return {width: `calc(${SLIDING_PIXELS * cards.length - 1})`}
+    }
+  }
+
+  const [currentIndex, setCurrentIndex] = useState(getStartingIndex()); // starts with 4 images
 
   const [leftButton, setLeftButton] = useState({
     css: "arrow disabled",
@@ -101,7 +117,7 @@ export const Carousel = ({
         onClick={slideRight}
         style={{ color: `${buttonColor}` }}
       />
-      <div className="carousel-map">
+      <div className="carousel-map" style={hasLessCards()}>
         <div
           className="carousel-map moving"
           style={{ left: `${position}px`, animation: animation }}

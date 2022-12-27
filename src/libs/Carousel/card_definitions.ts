@@ -1,37 +1,51 @@
 export class Event {
-    title: string;
-    image: string;
-    description: string;
-    location: string;
-    startingTime: string;
-    link: string;
+  title: string;
+  image: string;
+  description: string;
+  location: string;
+  startingTime: string;
+  link: string;
 
-    constructor(title: string = "", image: string = "", description: string = "", location: string = "", startingTime: string = "", link: string = ""){
-        this.title = title;
-        // url to image / directory location
-        this.image = image;
-        // ISO String
-        this.startingTime = startingTime;
-        // url in google maps
-        this.location = location;
-        this.description = description;
-        // url in social media
-        this.link = link;
-    }
+  constructor(
+    title: string = "",
+    image: string = "",
+    description: string = "",
+    location: string = "",
+    startingTime: string = "",
+    link: string = ""
+  ) {
+    this.title = title;
+    this.image = image;
+    this.startingTime = startingTime;
+    this.location = location;
+    this.description = description;
+    this.link = link;
+  }
 }
 
 export class Article {
-    title: string;
+  title: string;
+  link: string;
+  author: string;
+  image: string;
 
-    constructor(title: string = ""){
-        this.title = title;
-    }
+  constructor(
+    title: string = "",
+    author: string = "",
+    link: string = "",
+    image: string = ""
+  ) {
+    this.title = title;
+    this.link = link;
+    this.author = author;
+    this.image = image;
+  }
 }
 
 export class Custom {
-    title: string;
+  title: string;
 
-    constructor(title: string = ""){
-        this.title = title;
-    }
+  constructor(title: string = "") {
+    this.title = title;
+  }
 }
