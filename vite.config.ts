@@ -12,7 +12,7 @@ export default defineConfig({
   build: {
     lib: {
       // Could also be a dictionary or array of multiple entry points
-      entry: resolve(__dirname, './src/libs/index.ts'),
+      entry: resolve(__dirname, './libs/index.ts'),
       name: 'React Hovering Cards Carousel',
       // the proper extensions will be added
       fileName: 'react-hovering-cards-carousel',
