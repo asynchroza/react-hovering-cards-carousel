@@ -26,6 +26,10 @@ export const Carousel = ({
   const [position, setPosition] = useState(0);
   const [animation, setAnimation] = useState("none");
 
+  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+
+  const [currentIndex, setCurrentIndex] = useState(isDesktop ? 3 : 0); // starts with 4 images
+
   const [leftButton, setLeftButton] = useState({
     css: "arrow disabled",
     canClick: false,
@@ -36,15 +40,13 @@ export const Carousel = ({
     canClick: true,
   });
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
-
   const animationRunning = useRef(false);
 
-  const SLIDING_WINDOW_LENGTH =
-    (cards.length * (SLIDING_PIXELS + 2 * CARDS_MARGIN)) / 2; // in pixels
+  const SLIDING_WINDOW_LENGTH = cards.length * SLIDING_PIXELS;
+
 
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
-    if (animationRunning.current) return;
+    if (animationRunning.current ) return;
 
     if (rightButton.canClick) {
       animationRunning.current = true;
@@ -56,14 +58,15 @@ export const Carousel = ({
       setTimeout(() => {
         animationRunning.current = false;
       }, 750);
+      
 
       if (
-        (-position >= SLIDING_WINDOW_LENGTH + SLIDING_PIXELS && !isDesktop) ||
-        (-position >= SLIDING_PIXELS && isDesktop)
+        currentIndex + 1 === cards.length - 1
       ) {
         setRightButton({ css: "arrow right disabled", canClick: false });
       } else {
         setRightButton({ css: "arrow right", canClick: true });
+        setCurrentIndex(currentIndex + 1)
       }
     }
   };
