@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Event, Article, Custom } from "./card_definitions";
 
 type Props = {
@@ -7,9 +7,26 @@ type Props = {
 
 export const Card = ({ prop }: Props) => {
   // api/event
+
+  const [overlay, setOverlay] = useState("hidden");
+
+  const setOverlayAsVisible = () => {
+    setOverlay("card-overlay");
+  };
+  const setOverlayAsHidden = () => {
+    setOverlay("hidden");
+  };
+
   if (prop instanceof Event) {
     return (
-      <div className="card-container">
+      <div
+        className="card-container"
+        onMouseEnter={setOverlayAsVisible}
+        onMouseLeave={setOverlayAsHidden}
+      >
+        <div className={overlay}>
+          <h3>{prop.title}</h3>
+        </div>
         <img src={prop.image} className="card-images" />
       </div>
     );
@@ -23,7 +40,7 @@ export const Card = ({ prop }: Props) => {
       </div>
     );
 
-  // for external use 
+    // for external use
   } else {
     return (
       <div className="card-container">

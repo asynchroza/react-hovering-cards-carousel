@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 :root {
   --SLIDING_PIXELS: 240px;
   --NUMBER_OF_CARDS: 4;
+  --BORDER_RADIUS: 2rem;
 }
 
 .carousel-container {
@@ -25,7 +28,6 @@
 
 .carousel-map.moving {
   overflow: visible;
-  /* transform: translateX(0px) */
 }
 
 .arrow {
@@ -53,9 +55,9 @@
 }
 
 .card-container {
-  background-color: blue;
+  background-color: transparent;
   margin: 20px;
-  border-radius: 2rem;
+  border-radius: var(--BORDER_RADIUS);
   user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -64,6 +66,7 @@
   overflow: none;
   width: 200px;
   height: 200px;
+  font-family: Poppins;
 }
 
 .card-images {
@@ -71,6 +74,32 @@
   height: 200px;
   object-fit: cover;
   border-radius: inherit;
+}
+
+.card-overlay {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: transparent;
+  color: transparent;
+  animation: setOverlay 1s forwards;
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes setOverlay {
+  to {
+    background-color: rgba(0, 0, 0, 0.70);
+    color: white;
+  }
 }
 
 @keyframes slideLeft {
