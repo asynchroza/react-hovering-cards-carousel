@@ -38,11 +38,20 @@ export const Carousel = ({
     return 0;
   };
 
-  const hasLessCards = () => {
-    if(cards.length <= 3){
-      return {width: `calc(${SLIDING_PIXELS * cards.length - 1})`}
+  const getContainerStyle = () => {
+    if (cards.length <= 3 && isDesktop) {
+      console.log("here", SLIDING_PIXELS * cards.length);
+      return {
+        width: `calc(${-SLIDING_PIXELS * cards.length})`,
+        backgroundColor: `${backgroundColor}`,
+        justifyContent: "center"
+      };
+    } else {
+      return {
+        backgroundColor: `${backgroundColor}`
+      }
     }
-  }
+  };
 
   const [currentIndex, setCurrentIndex] = useState(getStartingIndex()); // starts with 4 images
 
@@ -108,16 +117,13 @@ export const Carousel = ({
   };
 
   return (
-    <div
-      className="carousel-container"
-      style={{ backgroundColor: `${backgroundColor}` }}
-    >
+    <div className="carousel-container" style={getContainerStyle()}>
       <FaArrowCircleLeft
         className={leftButton.css}
         onClick={slideRight}
         style={{ color: `${buttonColor}` }}
       />
-      <div className="carousel-map" style={hasLessCards()}>
+      <div className="carousel-map">
         <div
           className="carousel-map moving"
           style={{ left: `${position}px`, animation: animation }}
