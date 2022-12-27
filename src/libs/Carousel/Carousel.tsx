@@ -28,32 +28,32 @@ export const Carousel = ({
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
-  const getStartingIndex = () => {
-    if (isDesktop) {
-      if (cards.length <= 3) {
-        return 0;
-      } else return 3;
-    }
+  // const getStartingIndex = () => {
+  //   if (isDesktop) {
+  //     if (cards.length <= 3) {
+  //       return 0;
+  //     }
+  //     return 3;
+  //   }
 
-    return 0;
-  };
+  //   return 0;
+  // };
 
   const getContainerStyle = () => {
     if (cards.length <= 3 && isDesktop) {
-      console.log("here", SLIDING_PIXELS * cards.length);
       return {
         width: `calc(${-SLIDING_PIXELS * cards.length})`,
         backgroundColor: `${backgroundColor}`,
-        justifyContent: "center"
+        justifyContent: "center",
       };
     } else {
       return {
-        backgroundColor: `${backgroundColor}`
-      }
+        backgroundColor: `${backgroundColor}`,
+      };
     }
   };
 
-  const [currentIndex, setCurrentIndex] = useState(getStartingIndex()); // starts with 4 images
+  const [currentIndex, setCurrentIndex] = useState(isDesktop? 3 : 0); // starts with 4 images
 
   const [leftButton, setLeftButton] = useState({
     css: "arrow disabled",

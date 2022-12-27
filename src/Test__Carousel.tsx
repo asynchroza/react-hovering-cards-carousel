@@ -61,8 +61,6 @@ function TestCarousel() {
     });
   }, []);
 
-  console.log(articles)
-
   return (
     <div className="App">
       <Carousel cards={events} backgroundColor={"white"} />
