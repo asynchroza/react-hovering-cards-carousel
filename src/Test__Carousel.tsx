@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Carousel } from "./libs/Carousel/Carousel";
-import axios from "axios";
+import axios from 'axios'
 import { Article, Event } from "./libs/Carousel/card_definitions";
 
 function TestCarousel() {

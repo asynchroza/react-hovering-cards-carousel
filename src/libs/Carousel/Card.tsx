@@ -8,8 +8,6 @@ type Props = {
 };
 
 export const Card = ({ prop }: Props) => {
-  // api/event
-
   const [overlay, setOverlay] = useState("hidden");
 
   const setOverlayAsVisible = () => {
@@ -22,6 +20,10 @@ export const Card = ({ prop }: Props) => {
 
   const redirect = (url: string) => {
     window.open(url);
+  };
+
+  const checkUpcomingEvent = (ISODateString: string): boolean => {
+    return new Date(ISODateString) > new Date() ? true : false;
   };
 
   if (prop instanceof Event) {
@@ -52,10 +54,7 @@ export const Card = ({ prop }: Props) => {
         <img src={prop.image} className="card-images" />
       </div>
     );
-  }
-
-  // api/article
-  else if (prop instanceof Article) {
+  } else if (prop instanceof Article) {
     return (
       <div
         className="card-container"
