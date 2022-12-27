@@ -32,14 +32,14 @@
   position: absolute;
   height: 40px;
   width: 40px;
-  left: -20px;
+  left: -40px;
   top: 50%;
   z-index: 6;
 }
 
 .arrow.right {
   position: absolute;
-  right: -20px !important;
+  right: -40px !important;
   left: auto;
   transform: rotate(180deg);
 }
@@ -61,12 +61,16 @@
   -khtml-user-select: none;
   -webkit-user-select: none;
   -o-user-select: none;
+  overflow: none;
+  width: 200px;
+  height: 200px;
 }
 
 .card-images {
   width: 200px;
   height: 200px;
   object-fit: cover;
+  border-radius: inherit;
 }
 
 @keyframes slideLeft {

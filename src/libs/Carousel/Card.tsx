@@ -6,18 +6,24 @@ type Props = {
 };
 
 export const Card = ({ prop }: Props) => {
+  // api/event
   if (prop instanceof Event) {
     return (
       <div className="card-container">
         <img src={prop.image} className="card-images" />
       </div>
     );
-  } else if (prop instanceof Article) {
+  }
+
+  // api/article
+  else if (prop instanceof Article) {
     return (
       <div className="card-container">
         <h1>WORKING</h1>
       </div>
     );
+
+  // for external use 
   } else {
     return (
       <div className="card-container">
