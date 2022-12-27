@@ -42,6 +42,12 @@ export const Carousel = ({
 
   const animationRunning = useRef(false);
 
+  const unblockTrigger = () => {
+    setTimeout(() => {
+      animationRunning.current = false;
+    }, 750);
+  };
+
   const slideLeft = (event: React.MouseEvent<SVGAElement>) => {
     if (animationRunning.current) return;
 
@@ -52,9 +58,7 @@ export const Carousel = ({
 
       setLeftButton({ css: "arrow", canClick: true });
 
-      setTimeout(() => {
-        animationRunning.current = false;
-      }, 750);
+      unblockTrigger();
 
       if (currentIndex + 1 === cards.length - 1) {
         setRightButton({ css: "arrow right disabled", canClick: false });
@@ -77,9 +81,7 @@ export const Carousel = ({
       setRightButton({ css: "arrow right", canClick: true });
       setCurrentIndex(currentIndex - 1);
 
-      setTimeout(() => {
-        animationRunning.current = false;
-      }, 750);
+      unblockTrigger();
 
       if (-position - (SLIDING_PIXELS + CARDS_MARGIN * 2) <= 0) {
         setLeftButton({ css: "arrow disabled", canClick: false });
