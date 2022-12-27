@@ -66,7 +66,7 @@ function TestCarousel() {
   return (
     <div className="App">
       <Carousel cards={events} backgroundColor={"white"} />
-      <Carousel cards={articles} />
+      {/* <Carousel cards={articles} /> */}
     </div>
   );
 }
