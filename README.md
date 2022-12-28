@@ -1,10 +1,9 @@
 # React Hovering Cards Carousel (TypeScript)
 React Carousel which renders cards with hover effects.  
 
-<a href="https://github.com/asynchroza/react-hovering-cards-carousel" style="position: absolute"><img src="https://img.icons8.com/sf-regular/48/null/github.png"/></a>
+[Find on GitHub](https://github.com/asynchroza/react-hovering-cards-carousel)  
 
 <img src="https://i.ibb.co/2SRfLyp/image.png">
-
 
 ## How to use:
 
