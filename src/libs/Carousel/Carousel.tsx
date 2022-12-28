@@ -23,14 +23,9 @@ export const Carousel = ({
   buttonColor = "black",
   backgroundColor = "yellow",
 }: Props) => {
-
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
   const [animation, setAnimation] = useState("none");
-
-  if(cards.length > cardsLength){
-    setCardsLength(cards.length)
-  }
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
@@ -62,6 +57,22 @@ export const Carousel = ({
     css: isRightButtonBlocked ? "arrow right disabled" : "arrow right",
     canClick: !isRightButtonBlocked,
   });
+
+  // if (
+  //   leftButton.css.includes("disabled") &&
+  //   rightButton.css.includes("disabled")
+  // ) {
+  //   setRightButton({ css: "hidden", canClick: false });
+  //   setLeftButton({ css: "hidden", canClick: false });
+  // }
+
+  if (cards.length > cardsLength) {
+    setCardsLength(cards.length);
+    setRightButton({
+      css: isRightButtonBlocked ? "arrow right disabled" : "arrow right",
+      canClick: !isRightButtonBlocked,
+    });
+  }
 
   const animationRunning = useRef(false);
 
