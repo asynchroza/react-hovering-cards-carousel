@@ -1,10 +1,14 @@
 # React Hovering Cards Carousel (TypeScript)
+React Carousel which renders cards with hover effects.  
+
+<a href="https://github.com/asynchroza/react-hovering-cards-carousel"><img src="https://img.icons8.com/sf-regular/48/null/github.png"/></a>
 
 <img src="https://i.ibb.co/2SRfLyp/image.png">
 
+
 ## How to use:
 
-In order for the Component's styling to work, you need to import `style.css`:
+In order for the component's styling to work, you need to import `style.css`:
 
 ```javascript
 import `../node_modules/react-hovering-cards-carousel/dist/style.css`
@@ -28,20 +32,20 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 
 ```javascript
     title: string;
-    image: string; # <img src={prop.image}/>
+    image: string; // <img src={prop.image}/>
     description: string;
-    location: string; # url (e.g. Google Maps)
-    startingTime: string; # ISO String
-    link: string; # url (e.g. Facebook)
+    location: string; // url (e.g. Google Maps)
+    startingTime: string; // ISO String
+    link: string; // url (e.g. Facebook)
 ```
 
 ### type `Article`:
 
 ```javascript
     title: string;
-    link: string; # url (e.g. Medium)
+    link: string; // url (e.g. Medium)
     author: string; 
-    image: string; # <img src={prop.image}/>
+    image: string; // <img src={prop.image}/>
 ```
 
 ---
@@ -49,7 +53,7 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 ### Initialize the component:
 Create a list and populate it with objects of type `Custom` | `Event` | `Article` and then pass it to `<Carousel/>`
 
-
+* hardcoded items
 ```typescript
 import "../node_modules/react-hovering-cards-carousel/dist/style.css"
 import { Carousel, Custom } from "react-hovering-cards-carousel";
@@ -71,6 +75,46 @@ return (
 )
 ```
 
+* fetch items with an api request and map them ([an example with type Event](https://github.com/asynchroza/react-hovering-cards-carousel/blob/master/src/Test__Carousel.tsx)):
+```javascript
+ const [events, setEvents] = useState<Event[]>([]);
+
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: "https://dev.thehub-aubg.com/api/event",
+    }).then((res) => {
+      let resData: Array<unknown> = res.data.data.events;
+      let temp: Array<Event> = [];
+
+      if (resData) {
+        resdata.forEach((element: any) => {
+          temp.push(
+            new Event(
+              element.title,
+              element.banner,
+              element.description,
+              element.locationlink,
+              element.startdate,
+              element.facebooklink
+            )
+          );
+        });
+
+      setEvents(temp);
+      }
+    });
+  }, []);
+
+
+    return (
+    <div className="App">
+      <Carousel cards={events} />
+    </div>
+  );
+
+```
+
 ### `<Carousel/>` styling:
 
 The Carousel component has preset values for `backgroundColor` and `buttonsColor`.  
@@ -80,5 +124,5 @@ If you wish to change the colors, you can achieve it by doing:
 
 ```javascript
 <Carousel cards={cards} backgroundColor={"yellow"} buttonsColor={"red"}>
-// you can define colors same way you do in css (hex, rgb(), rgba())
+// you can define colors the same way you do in css (hex, rgb(), rgba())
 ```
