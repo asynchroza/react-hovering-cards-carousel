@@ -11,6 +11,11 @@ type Props = {
   cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
   backgroundColor?: string;
+  upcomingEventLabel?: {
+    text: string,
+    backgroundColor: string,
+    color: string,
+  };
 };
 
 enum SlidingAnimation {
@@ -22,6 +27,7 @@ export const Carousel = ({
   cards,
   buttonColor = "black",
   backgroundColor = "transparent",
+  upcomingEventLabel
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);

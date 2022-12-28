@@ -5,9 +5,14 @@ import { HiLocationMarker as Location } from "react-icons/hi";
 
 type Props = {
   prop: Event | Article | Custom;
+  upcomingEventLabel?: {
+    text: string,
+    backgroundColor: string,
+    color: string
+  };
 };
 
-export const Card = ({ prop }: Props) => {
+export const Card = ({ prop, upcomingEventLabel }: Props) => {
   const [overlay, setOverlay] = useState("hidden");
 
   const setOverlayAsVisible = () => {
@@ -22,17 +27,25 @@ export const Card = ({ prop }: Props) => {
     window.open(url);
   };
 
-  const checkUpcomingEvent = (ISODateString: string): boolean => {
-    return new Date(ISODateString) > new Date() ? true : false;
+  if (prop instanceof Event) {
+
+    const checkUpcomingEvent = (ISODateString: string): boolean => {
+      if(!upcomingEventLabel) return false;
+
+      try {
+        return new Date(ISODateString) > new Date() ? true : false;
+      } catch (error) {
+        return false;
+      }
   };
 
-  if (prop instanceof Event) {
     return (
       <div
         className="card-container"
         onMouseEnter={setOverlayAsVisible}
         onMouseLeave={setOverlayAsHidden}
       >
+        {checkUpcomingEvent(prop.startingTime)? <div className="upcoming-event-box"><span>Upcoming</span></div> : null}
         <div className={overlay}>
           <h3>{prop.title}</h3>
           <p>{prop.description}</p>
