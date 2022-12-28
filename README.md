@@ -1,7 +1,8 @@
 # React Hovering Cards Carousel (TypeScript)
-React Carousel which renders cards with hover effects.  
 
-[Find on GitHub](https://github.com/asynchroza/react-hovering-cards-carousel)  
+React Carousel which renders cards with hover effects.
+
+[Find on GitHub](https://github.com/asynchroza/react-hovering-cards-carousel)
 
 <img src="https://i.ibb.co/2SRfLyp/image.png">
 
@@ -26,33 +27,37 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 ```javascript
 # TBA
 ```
+
 #### <em>The types below were developed for internal use within the @AUBGTheHub organization, but you can make use of them as you wish!</em>
+
 ### type `Event`:
 
 ```javascript
-    title: string;
-    image: string; // <img src={prop.image}/>
-    description: string;
-    location: string; // url (e.g. Google Maps)
-    startingTime: string; // ISO String
-    link: string; // url (e.g. Facebook)
+title: string;
+image: string; // <img src={prop.image}/>
+description: string;
+location: string; // url (e.g. Google Maps)
+startingTime: string; // ISO String
+link: string; // url (e.g. Facebook)
 ```
 
 ### type `Article`:
 
 ```javascript
-    title: string;
-    link: string; // url (e.g. Medium)
-    author: string; 
-    image: string; // <img src={prop.image}/>
+title: string;
+link: string; // url (e.g. Medium)
+author: string;
+image: string; // <img src={prop.image}/>
 ```
 
 ---
 
 ### Initialize the component:
+
 Create a list and populate it with objects of type `Custom` | `Event` | `Article` and then pass it to `<Carousel/>`
 
-* hardcoded items
+- hardcoded items
+
 ```typescript
 import "../node_modules/react-hovering-cards-carousel/dist/style.css"
 import { Carousel, Custom } from "react-hovering-cards-carousel";
@@ -74,7 +79,8 @@ return (
 )
 ```
 
-* fetch items with an api request and map them ([an example with type Event](https://github.com/asynchroza/react-hovering-cards-carousel/blob/master/src/Test__Carousel.tsx)):
+- fetch items with an api request and map them ([an example with type Event](https://github.com/asynchroza/react-hovering-cards-carousel/blob/master/src/Test__Carousel.tsx)):
+
 ```javascript
  const [events, setEvents] = useState<Event[]>([]);
 
@@ -117,7 +123,7 @@ return (
 ### `<Carousel/>` styling:
 
 The Carousel component has preset values for `backgroundColor` and `buttonsColor`.  
-If left unaddressed, the component is going to have a `transparent` background and `black` buttons. 
+If left unaddressed, the component is going to have a `transparent` background and `black` buttons.
 
 If you wish to change the colors, you can achieve it by doing:
 
@@ -125,3 +131,29 @@ If you wish to change the colors, you can achieve it by doing:
 <Carousel cards={cards} backgroundColor={"yellow"} buttonsColor={"red"}>
 // you can define colors the same way you do in css (hex, rgb(), rgba())
 ```
+
+## Quirks:
+
+
+### <strong>Events</strong> - You may add labels for upcoming events: 
+
+<img src="https://i.ibb.co/kmrDd3K/image.png">
+
+`upcomgEventLabel` is an object which requires `text`, `backgroundColor` and `color`.
+
+- `text` is what's getting rendered in the div
+- `backgroundColor` is the color of the box
+- `color` is the color of the text
+
+```typescript
+<Carousel
+  cards={events}
+  upcomingEventLabel={{
+    text: "Upcoming",
+    backgroundColor: "rgba(255, 255, 255, 0.7)",
+    color: "black",
+  }}
+/>
+```
+
+<em>Box won't get rendered if `prop.startingTime` is not a parsable `Date()`</em>

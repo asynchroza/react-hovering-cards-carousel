@@ -144,8 +144,6 @@
 
 .upcoming-event-box {
   position: absolute;
-  color: black;
-  background-color: rgba(255, 255, 255, 0.7);
   right: 10px;
   top: 20px;
   border-radius: 0.2rem;
