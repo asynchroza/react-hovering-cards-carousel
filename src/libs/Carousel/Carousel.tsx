@@ -15,7 +15,7 @@ type Props = {
     text: string,
     backgroundColor: string,
     color: string,
-  };
+  } | null;
 };
 
 enum SlidingAnimation {
@@ -27,7 +27,7 @@ export const Carousel = ({
   cards,
   buttonColor = "black",
   backgroundColor = "transparent",
-  upcomingEventLabel
+  upcomingEventLabel = null 
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
@@ -160,7 +160,7 @@ export const Carousel = ({
           key={Math.random()}
         >
           {cards.map((card, index) => (
-            <Card prop={card} key={index} />
+            <Card prop={card} key={index} upcomingEventLabel={upcomingEventLabel}/>
           ))}
         </div>
       </div>

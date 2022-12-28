@@ -63,7 +63,7 @@ function TestCarousel() {
 
   return (
     <div className="App">
-      <Carousel cards={events} backgroundColor={"white"} />
+      <Carousel cards={events} backgroundColor={"white"} upcomingEventLabel={{text: "Upcoming!", backgroundColor: "rgba(255, 255, 255, 0.7)", color: "black"}} />
       <Carousel cards={articles} />
     </div>
   );
