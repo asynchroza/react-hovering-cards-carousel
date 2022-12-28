@@ -50,27 +50,40 @@ export const Carousel = ({
     canClick: false,
   });
 
-  const isRightButtonBlocked: boolean =
+  const isButtonVisible: boolean =
     (isDesktop && cards.length <= 4) || (!isDesktop && cards.length <= 1);
 
   const [rightButton, setRightButton] = useState({
-    css: isRightButtonBlocked ? "arrow right disabled" : "arrow right",
-    canClick: !isRightButtonBlocked,
+    css: isButtonVisible ? "arrow right disabled" : "arrow right",
+    canClick: !isButtonVisible,
   });
 
-  // if (
-  //   leftButton.css.includes("disabled") &&
-  //   rightButton.css.includes("disabled")
-  // ) {
-  //   setRightButton({ css: "hidden", canClick: false });
-  //   setLeftButton({ css: "hidden", canClick: false });
-  // }
+  /*  
+
+        The component does not get rendered, if cards is empty.
+        Therefore, it doesn't matter if we set an incorrect state to the buttons.
+        Once the array grows (becomes > 0), then we may set the correct states.
+
+        -> this is why we need the block below.
+
+        This could be handled by the developer who is using the library, 
+        by rendering the component only when cards.length > 0, 
+        but I decided to abstract it.  
+
+        This might come at a price ...
+
+  */
 
   if (cards.length > cardsLength) {
     setCardsLength(cards.length);
     setRightButton({
-      css: isRightButtonBlocked ? "arrow right disabled" : "arrow right",
-      canClick: !isRightButtonBlocked,
+      css: isButtonVisible ? "hidden" : "arrow right",
+      canClick: !isButtonVisible,
+    });
+
+    setLeftButton({
+      css: isButtonVisible ? "hidden" : "arrow disabled",
+      canClick: !isButtonVisible,
     });
   }
 
