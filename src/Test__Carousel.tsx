@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Carousel } from "./libs/Carousel/Carousel";
-import axios from 'axios'
+import axios from "axios";
 import { Article, Event } from "./libs/Carousel/card_definitions";
 
 function TestCarousel() {
@@ -42,29 +42,36 @@ function TestCarousel() {
     }).then((res) => {
       let resdata: Array<unknown> = res.data.data.data;
 
-      let articles: Array<Article> = [];
+      let temp: Array<Article> = [];
 
       if (resdata) {
         resdata.forEach((element: any) => {
-          articles.push(
+          temp.push(
             new Article(
-              element.title, 
-              element.author, 
-              element.mediumlink, 
+              element.title,
+              element.author,
+              element.mediumlink,
               element.banner
             )
           );
         });
       }
 
-      setArticles(articles);
+      setArticles(temp);
     });
   }, []);
 
   return (
     <div className="App">
-      <Carousel cards={events} backgroundColor={"white"} upcomingEventLabel={{text: "Upcoming", backgroundColor: "rgba(255, 255, 255, 0.7)", color: "black"}} />
-      <Carousel cards={articles} />
+      <Carousel
+        cards={events}
+        upcomingEventLabel={{
+          text: "Upcoming",
+          backgroundColor: "rgba(255, 255, 255, 0.7)",
+          color: "black",
+        }}
+      />
+      <Carousel cards={articles} backgroundColor={"yellow"} />
     </div>
   );
 }
