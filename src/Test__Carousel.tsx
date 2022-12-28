@@ -71,7 +71,7 @@ function TestCarousel() {
           color: "black",
         }}
       />
-      <Carousel cards={articles} backgroundColor={"yellow"} />
+      <Carousel cards={articles} />
     </div>
   );
 }

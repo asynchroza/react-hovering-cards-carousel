@@ -10,11 +10,10 @@ import { useMediaQuery } from "react-responsive";
 type Props = {
   cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
-  backgroundColor?: string;
   upcomingEventLabel?: {
-    text: string,
-    backgroundColor: string,
-    color: string,
+    text: string;
+    backgroundColor: string;
+    color: string;
   } | null;
 };
 
@@ -26,8 +25,7 @@ enum SlidingAnimation {
 export const Carousel = ({
   cards,
   buttonColor = "black",
-  backgroundColor = "transparent",
-  upcomingEventLabel = null 
+  upcomingEventLabel = null,
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
@@ -39,13 +37,10 @@ export const Carousel = ({
     if (cards.length <= 3 && isDesktop) {
       return {
         width: `calc(${-SLIDING_PIXELS * cards.length})`,
-        backgroundColor: `${backgroundColor}`,
         justifyContent: "center",
       };
     } else {
-      return {
-        backgroundColor: `${backgroundColor}`,
-      };
+      return {};
     }
   };
 
@@ -160,7 +155,11 @@ export const Carousel = ({
           key={Math.random()}
         >
           {cards.map((card, index) => (
-            <Card prop={card} key={index} upcomingEventLabel={upcomingEventLabel}/>
+            <Card
+              prop={card}
+              key={index}
+              upcomingEventLabel={upcomingEventLabel}
+            />
           ))}
         </div>
       </div>
