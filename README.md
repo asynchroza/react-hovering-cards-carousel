@@ -123,13 +123,13 @@ return (
 
 ### `<Carousel/>` styling:
 
-The Carousel component has preset values for `backgroundColor` and `buttonsColor`.  
-If left unaddressed, the component is going to have a `transparent` background and `black` buttons.
+The Carousel component has a preset value for `buttonsColor`.  
+If left unaddressed, the buttons are going to be `black`.
 
 If you wish to change the colors, you can achieve it by doing:
 
 ```javascript
-<Carousel cards={cards} backgroundColor={"yellow"} buttonsColor={"red"}>
+<Carousel cards={cards} buttonsColor={"red"}>
 // you can define colors the same way you do in css (hex, rgb(), rgba())
 ```
 
