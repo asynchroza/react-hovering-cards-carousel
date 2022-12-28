@@ -21,7 +21,7 @@ enum SlidingAnimation {
 export const Carousel = ({
   cards,
   buttonColor = "black",
-  backgroundColor = "yellow",
+  backgroundColor = "transparent",
 }: Props) => {
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
