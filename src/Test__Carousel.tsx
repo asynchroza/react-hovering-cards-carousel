@@ -5,8 +5,8 @@ import axios from 'axios'
 import { Article, Event } from "./libs/Carousel/card_definitions";
 
 function TestCarousel() {
-  const [events, setEvents] = useState([new Event()]);
-  const [articles, setArticles] = useState([new Article()]);
+  const [events, setEvents] = useState<Event[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     axios({
@@ -64,7 +64,7 @@ function TestCarousel() {
   return (
     <div className="App">
       <Carousel cards={events} backgroundColor={"white"} />
-      {/* <Carousel cards={articles} /> */}
+      <Carousel cards={articles} />
     </div>
   );
 }

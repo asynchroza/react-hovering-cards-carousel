@@ -23,21 +23,16 @@ export const Carousel = ({
   buttonColor = "black",
   backgroundColor = "yellow",
 }: Props) => {
+
   const [position, setPosition] = useState(0);
+  const [cardsLength, setCardsLength] = useState(cards.length);
   const [animation, setAnimation] = useState("none");
 
+  if(cards.length > cardsLength){
+    setCardsLength(cards.length)
+  }
+
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
-
-  // const getStartingIndex = () => {
-  //   if (isDesktop) {
-  //     if (cards.length <= 3) {
-  //       return 0;
-  //     }
-  //     return 3;
-  //   }
-
-  //   return 0;
-  // };
 
   const getContainerStyle = () => {
     if (cards.length <= 3 && isDesktop) {
@@ -53,16 +48,19 @@ export const Carousel = ({
     }
   };
 
-  const [currentIndex, setCurrentIndex] = useState(isDesktop? 3 : 0); // starts with 4 images
+  const [currentIndex, setCurrentIndex] = useState(isDesktop ? 3 : 0); // starts with 4 images
 
   const [leftButton, setLeftButton] = useState({
     css: "arrow disabled",
     canClick: false,
   });
 
+  const isRightButtonBlocked: boolean =
+    (isDesktop && cards.length <= 4) || (!isDesktop && cards.length <= 1);
+
   const [rightButton, setRightButton] = useState({
-    css: "arrow right",
-    canClick: true,
+    css: isRightButtonBlocked ? "arrow right disabled" : "arrow right",
+    canClick: !isRightButtonBlocked,
   });
 
   const animationRunning = useRef(false);
@@ -115,6 +113,8 @@ export const Carousel = ({
       }
     }
   };
+
+  if (cards.length === 0) return null;
 
   return (
     <div className="carousel-container" style={getContainerStyle()}>
