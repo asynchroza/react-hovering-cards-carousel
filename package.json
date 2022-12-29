@@ -17,6 +17,7 @@
       "require": "./dist/react-hovering-cards-carousel.umd.cjs"
     }
   },
+  "keywords": ["ReactJS", "TypeScript", "Component Library", "Carousel", "Hovering Cards", "Sliding Cards"],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
