@@ -26,7 +26,53 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 ### type `Custom`:
 
 ```javascript
-# TBA
+image: string; // <img src={prop.image}>
+children: JSX.Element; // this is what gets rendered when you hover over the card
+```
+
+How to create a `JSX Element`:
+
+```typescript
+type CustomChildProp = {
+  title: string;
+  description: string;
+  // add additional
+};
+
+let CustomChild = (prop: CustomChildProp) => {
+  return (
+    <div>
+      <h1>{prop.title}</h1>
+      <p>{prop.description}</p>
+      {/* add additional */}
+    </div>
+  );
+};
+```
+
+Create a `<Carousel/>` using type `Custom` (see example code [here](https://github.com/asynchroza/react-hovering-cards-carousel/blob/master/src/Test__Carousel.tsx)):
+
+```javascript
+
+import {Custom} from 'react-hovering-cards-carousel'
+
+.
+.
+.
+
+// declare array
+const arr = [
+  new Custom("https://example.com", <CustomChild title="Example", description="This is an example"/>),
+
+  new Custom("https://secondexample.uk", <CustomChild title="Example Two", description="This is the second example">)
+]
+
+.
+.
+.
+
+<Carousel cards={arr}/>
+
 ```
 
 #### <em>The types below were developed for internal use within the @AUBGTheHub organization, but you can make use of them as you wish!</em>
@@ -135,8 +181,7 @@ If you wish to change the colors, you can achieve it by doing:
 
 ## Quirks:
 
-
-### <strong>Events</strong> - You may add labels for upcoming events: 
+### <strong>Events</strong> - You may add labels for upcoming events:
 
 <img src="https://i.ibb.co/kmrDd3K/image.png">
 

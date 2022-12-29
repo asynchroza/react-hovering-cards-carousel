@@ -61,16 +61,25 @@ function TestCarousel() {
     });
   }, []);
 
-  let customChild = () => {
+
+  type CustomChildProp = {
+    title: string,
+    description: string
+    // add additional
+  }
+
+  let CustomChild = (prop: CustomChildProp) => {
     return (
       <div>
-        <h1 className="demo-style-h1">WORKING</h1>
+        <h1 className="demo-style-h1">{prop.title}</h1>
+        <p>{prop.description}</p>
+        {/* add additional */}
       </div>
     );
   };
 
   let customArr = [
-    new Custom("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX6zRkmS6z10q3NKKaWZlDS6KUuiD6HMF3jBmEM-uE2w&s", customChild())
+    new Custom("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX6zRkmS6z10q3NKKaWZlDS6KUuiD6HMF3jBmEM-uE2w&s", <CustomChild title="Example" description="This is example"/>)
   ]
 
   return (
