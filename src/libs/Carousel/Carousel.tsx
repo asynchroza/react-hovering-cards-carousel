@@ -110,7 +110,7 @@ export const Carousel = ({
 
     setLeftButton({
       css: isButtonVisible ? "hidden" : "arrow disabled",
-      canClick: !isButtonVisible,
+      canClick: false, // left button is always unclickable on initialization / reload
     });
   }
 
