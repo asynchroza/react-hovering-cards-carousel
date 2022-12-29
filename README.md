@@ -12,6 +12,10 @@ React Carousel which renders cards with hover effects.
     * Import styling
   * `<Carousel/>` component
     * Properties
+      * `cards`
+      * `scale`
+      * `reloadOnResize`
+      * `upcomingEventLabel`
   * Types of cards
     * type `Custom`
       * How to create a JSX Element (card overlay)
