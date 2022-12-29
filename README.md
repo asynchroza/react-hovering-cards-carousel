@@ -185,7 +185,7 @@ If you wish to change the colors, you can achieve it by doing:
 
 <img src="https://i.ibb.co/kmrDd3K/image.png">
 
-`upcomgEventLabel` is an object which requires `text`, `backgroundColor` and `color`.
+`upcomingEventLabel` is an object which requires `text`, `backgroundColor` and `color`.
 
 - `text` is what's getting rendered in the div
 - `backgroundColor` is the color of the box
