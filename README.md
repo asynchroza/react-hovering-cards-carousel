@@ -7,6 +7,23 @@ React Carousel which renders cards with hover effects.
 
 <img src="https://i.ibb.co/2SRfLyp/image.png">
 
+* How to use?
+  * Setup
+    * Import styling
+  * `<Carousel/>` component
+    * Properties
+  * Types of cards
+    * type `Custom`
+      * How to create a JSX Element (card overlay)
+      * Example with type `Custom`
+    * type `Event` ([@AUBGTheHUB](https://github.com/AUBGTheHUB))
+    * type `Article` ([@AUBGTheHUB](https://github.com/AUBGTheHUB))
+  * Component initialization
+    * Initialization of hardcoded arrays
+    * Fetching from an endpoint and mapping response to specific card type
+  * Quirks:
+    * Show label for upcoming events ([@AUBGTheHUB](https://github.com/AUBGTheHUB))
+
 ## How to use:
 
 In order for the component's styling to work, you need to import `style.css`:
@@ -18,10 +35,13 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 ## `<Carousel/>`:
 
 ```javascript
-<Carousel cards={events} />
+<Carousel cards={events} scale={1.25} buttonsBackground={"red"} reloadOnResize={false}/>
 ```
 
-- `cards` props accepts an array of type `Custom`, `Article` or `Event`:
+- `cards` props is an array of type `Custom`, `Article` or `Event` where the items are the ones getting rendered.
+- `scale` (default: `1`) prop accepts a number which signifies the times the component sizes up or down depending on your needs.
+- `reloadOnResize` (default: `true`) prop accepts a boolean value which would either enable or disable the window reloading behavior triggered by the component when resolution is being changed.
+- `upcomingEventLabel` (optional) prop accepts an object defining a specific label which is shown when an event is upcoming. More about this in the `Quirks` section.
 
 ### type `Custom`:
 

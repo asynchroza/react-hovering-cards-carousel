@@ -91,8 +91,9 @@ function TestCarousel() {
           backgroundColor: "rgba(255, 255, 255, 0.7)",
           color: "black",
         }}
+        scale={1.25}
       />
-      <Carousel cards={articles} />
+      <Carousel cards={articles}/>
       <Carousel cards={customArr}/>
     </div>
   );
