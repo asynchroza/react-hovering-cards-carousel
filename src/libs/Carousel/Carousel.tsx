@@ -11,6 +11,7 @@ type Props = {
   cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
   reloadOnResize?: boolean;
+  scale?: number,
   upcomingEventLabel?: {
     text: string;
     backgroundColor: string;
@@ -28,6 +29,7 @@ export const Carousel = ({
   buttonColor = "black",
   upcomingEventLabel = null,
   reloadOnResize = true,
+  scale = 1
 }: Props) => {
 
   /*
@@ -51,14 +53,21 @@ export const Carousel = ({
 
   const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
 
+  const mainContainer = {
+    justifyContent: "center",
+    transform: `scale(${scale})`
+  }
+
   const getContainerStyle = () => {
     if (cards.length <= 3 && isDesktop) {
       return {
         width: `calc(${-SLIDING_PIXELS * cards.length})`,
-        justifyContent: "center",
+        ...mainContainer
       };
     } else {
-      return {};
+      return {
+        ...mainContainer
+      };
     }
   };
 

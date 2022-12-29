@@ -93,7 +93,7 @@ function TestCarousel() {
         }}
       />
       <Carousel cards={articles} />
-      <Carousel cards={customArr} />
+      <Carousel cards={customArr}/>
     </div>
   );
 }
