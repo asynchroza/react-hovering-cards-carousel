@@ -2,7 +2,7 @@
   "author": "Michael Bozhilov <michaelbozhilov@gmail.com> (https://www.linkedin.com/in/mbozhilov/)",
   "license": "MIT",
   "private": false,
-  "version": "0.2.0",
+  "version": "0.2.1",
   "name": "react-hovering-cards-carousel",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -22,7 +22,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "dist": "npx vite build && npx tsc src/libs/index.ts --declaration --emitDeclarationOnly --jsx react --esModuleInterop --outDir dist",
+    "dist": "npx vite build && npx tsc src/libs/index.ts --declaration --emitDeclarationOnly --jsx react --esModuleInterop --outDir dist && npm publish",
     "setup": "npm install & npm install -g axios && npm link axios"
   },
   "dependencies": {
