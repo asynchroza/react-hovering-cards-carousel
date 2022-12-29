@@ -7,12 +7,12 @@ export class Event {
   link: string;
 
   constructor(
-    title: string = "",
-    image: string = "",
-    description: string = "",
-    location: string = "",
-    startingTime: string = "",
-    link: string = ""
+    title: string,
+    image: string,
+    description: string,
+    location: string,
+    startingTime: string, 
+    link: string
   ) {
     this.title = title;
     this.image = image;
@@ -29,12 +29,7 @@ export class Article {
   author: string;
   image: string;
 
-  constructor(
-    title: string = "",
-    author: string = "",
-    link: string = "",
-    image: string = ""
-  ) {
+  constructor(title: string, author: string, link: string, image: string) {
     this.title = title;
     this.link = link;
     this.author = author;
@@ -44,9 +39,9 @@ export class Article {
 
 export class Custom {
   image: string;
-  children: JSX.Element; 
+  children: JSX.Element;
 
-  constructor(image: string = "", children: JSX.Element) {
+  constructor(image: string, children: JSX.Element) {
     this.image = image;
     this.children = children;
   }
