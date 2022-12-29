@@ -70,6 +70,23 @@ let CustomChild = (prop: CustomChildProp) => {
 };
 ```
 
+Additionally you may (preferably) add specific styling to your JSX Element:
+```javascript
+import './style.css' // either in a parent component or in the same place
+// where you define the CustomChild Element
+
+
+let CustomChild = (prop: CustomChildProp) => {
+  return (
+    <div className="container">
+      <h1 className="title-header">{prop.title}</h1>
+      <p className="description">{prop.description}</p>
+      {/* add additional */}
+    </div>
+  );
+};
+```
+
 Create a `<Carousel/>` using type `Custom` (see example code [here](https://github.com/asynchroza/react-hovering-cards-carousel/blob/master/src/Test__Carousel.tsx)):
 
 ```javascript
