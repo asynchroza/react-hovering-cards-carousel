@@ -239,4 +239,4 @@ If you wish to change the colors, you can achieve it by doing:
 />
 ```
 
-<em>Box won't get rendered if `prop.startingTime` is not a parsable `Date()`</em>
+<em>Box won't get rendered if `prop.startingTime` cannot be parse as a `Date()` object.</em>
