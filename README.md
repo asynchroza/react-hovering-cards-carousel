@@ -18,10 +18,10 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 ## `<Carousel/>`:
 
 ```javascript
-<Carousel cards={events} backgroundColor={"white"} buttonsColor={"black"} />
+<Carousel cards={events} />
 ```
 
-- `cards` props accepts a list of type `Custom`, `Article` or `Event`:
+- `cards` props accepts an array of type `Custom`, `Article` or `Event`:
 
 ### type `Custom`:
 
