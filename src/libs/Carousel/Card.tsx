@@ -101,8 +101,15 @@ export const Card = ({ prop, upcomingEventLabel }: Props) => {
     // for external use
   } else {
     return (
-      <div className="card-container">
-        <h1>WORKING</h1>
+      <div
+        className="card-container"
+        onMouseEnter={setOverlayAsVisible}
+        onMouseLeave={setOverlayAsHidden}
+      >
+        <div className={overlay}>
+          {prop.children}
+        </div>
+        <img src={prop.image} className="card-images"/>
       </div>
     );
   }

@@ -10,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 type Props = {
   cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
+  reloadOnResize?: boolean;
   upcomingEventLabel?: {
     text: string;
     backgroundColor: string;
@@ -26,7 +27,24 @@ export const Carousel = ({
   cards,
   buttonColor = "black",
   upcomingEventLabel = null,
+  reloadOnResize = true,
 }: Props) => {
+
+  /*
+    This is needed so that the buttons can show up on mobile versions when
+    screen is resized and vice-versa. Otherwise the state doesn't recognize
+    that there are hidden (desktop -> mobile)/not enough (mobile -> desktop) cards. 
+    Component should be reinitialized. 
+
+    You could disable the reload if you're sure that your arrays always contain at least 5 items.
+  */
+
+  window.onresize = function () {
+    if (reloadOnResize) {
+      location.reload();
+    }
+  };
+
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
   const [animation, setAnimation] = useState("none");
@@ -46,16 +64,16 @@ export const Carousel = ({
 
   const [currentIndex, setCurrentIndex] = useState(isDesktop ? 3 : 0); // starts with 4 images
 
-  const [leftButton, setLeftButton] = useState({
-    css: "arrow disabled",
-    canClick: false,
-  });
-
   const isButtonVisible: boolean =
     (isDesktop && cards.length <= 4) || (!isDesktop && cards.length <= 1);
 
+  const [leftButton, setLeftButton] = useState({
+    css: isButtonVisible ? "hidden" : "arrow disabled",
+    canClick: false,
+  });
+
   const [rightButton, setRightButton] = useState({
-    css: isButtonVisible ? "arrow right disabled" : "arrow right",
+    css: isButtonVisible ? "hidden" : "arrow right",
     canClick: !isButtonVisible,
   });
 
@@ -72,7 +90,6 @@ export const Carousel = ({
         but I decided to abstract it.  
 
         This might come at a price ...
-
   */
 
   if (cards.length > cardsLength) {

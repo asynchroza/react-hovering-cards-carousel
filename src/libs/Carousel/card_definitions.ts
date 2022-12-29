@@ -43,9 +43,11 @@ export class Article {
 }
 
 export class Custom {
-  title: string;
+  image: string;
+  children: JSX.Element; 
 
-  constructor(title: string = "") {
-    this.title = title;
+  constructor(image: string = "", children: JSX.Element) {
+    this.image = image;
+    this.children = children;
   }
 }

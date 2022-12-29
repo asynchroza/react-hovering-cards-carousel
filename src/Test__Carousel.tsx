@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Carousel } from "./libs/Carousel/Carousel";
 import axios from "axios";
-import { Article, Event } from "./libs/Carousel/card_definitions";
+import { Article, Event, Custom } from "./libs/Carousel/card_definitions";
 
 function TestCarousel() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -61,6 +61,18 @@ function TestCarousel() {
     });
   }, []);
 
+  let customChild = () => {
+    return (
+      <div>
+        <h1 className="demo-style-h1">WORKING</h1>
+      </div>
+    );
+  };
+
+  let customArr = [
+    new Custom("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX6zRkmS6z10q3NKKaWZlDS6KUuiD6HMF3jBmEM-uE2w&s", customChild())
+  ]
+
   return (
     <div className="App">
       <Carousel
@@ -72,6 +84,7 @@ function TestCarousel() {
         }}
       />
       <Carousel cards={articles} />
+      <Carousel cards={customArr} />
     </div>
   );
 }
