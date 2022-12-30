@@ -16,6 +16,8 @@ React Carousel which renders cards with hover effects.
       * `scale`
       * `reloadOnResize`
       * `upcomingEventLabel`
+      * `buttonColor`
+      * `buttonSpacing`
   * Types of cards
     * type `Custom`
       * How to create a JSX Element (card overlay)
@@ -46,6 +48,8 @@ import `../node_modules/react-hovering-cards-carousel/dist/style.css`
 - `scale` (default: `1`) prop accepts a number which signifies the times the component sizes up or down depending on your needs.
 - `reloadOnResize` (default: `true`) prop accepts a boolean value which would either enable or disable the window reloading behavior triggered by the component when resolution is being changed.
 - `upcomingEventLabel` (optional) prop accepts an object defining a specific label which is shown when an event is upcoming. More about this in the `Quirks` section.
+- `buttonColor` (default: `black`) set color of arrow buttons.
+- `buttonSpacing` (default: `40`) control the space between the buttons and the main container. Value is in pixels and multiplied by `-1`. Hence values lower than > `40` bring the buttons closer to the container.
 
 ### type `Custom`:
 
@@ -210,13 +214,10 @@ return (
 
 ### `<Carousel/>` styling:
 
-The Carousel component has a preset value for `buttonsColor`.  
-If left unaddressed, the buttons are going to be `black`.
-
-If you wish to change the colors, you can achieve it by doing:
+You may use hex, rgb() and rgba() values everywhere color is mentioned.
 
 ```javascript
-<Carousel cards={cards} buttonsColor={"red"}>
+<Carousel cards={cards} buttonColor={"red"}>
 // you can define colors the same way you do in css (hex, rgb(), rgba())
 ```
 
