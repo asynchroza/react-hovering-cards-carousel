@@ -31,18 +31,20 @@
   overflow: visible;
 }
 
+/* arrow positioning is managed by Carousel.tsx (line ~177, ~197) */
+
 .arrow {
   position: absolute;
   height: 40px;
   width: 40px;
-  left: -40px;
+  /* left: -40px; */
   top: 50%;
   z-index: 6;
 }
 
 .arrow.right {
   position: absolute;
-  right: -40px !important;
+  /* right: -40px !important; */
   left: auto;
   transform: rotate(180deg);
 }
@@ -91,10 +93,12 @@
   justify-content: center;
   align-items: center;
   font-family: inherit;
+  text-align: center;
 }
 
 .card-overlay h3 {
   margin: 0;
+  font-size: medium;
 }
 
 .card-overlay p {

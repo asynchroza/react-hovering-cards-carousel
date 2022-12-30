@@ -10,6 +10,7 @@ import { useMediaQuery } from "react-responsive";
 type Props = {
   cards: Event[] | Article[] | Custom[];
   buttonColor?: string;
+  buttonSpacing?: number;
   reloadOnResize?: boolean;
   scale?: number,
   upcomingEventLabel?: {
@@ -27,9 +28,10 @@ enum SlidingAnimation {
 export const Carousel = ({
   cards,
   buttonColor = "black",
+  buttonSpacing = 40,
   upcomingEventLabel = null,
   reloadOnResize = true,
-  scale = 1
+  scale = 1,
 }: Props) => {
 
   /*
@@ -172,7 +174,7 @@ export const Carousel = ({
       <FaArrowCircleLeft
         className={leftButton.css}
         onClick={slideRight}
-        style={{ color: `${buttonColor}` }}
+        style={{ color: `${buttonColor}`, left: `${buttonSpacing * -1}` }}
       />
       <div className="carousel-map">
         <div
@@ -192,7 +194,7 @@ export const Carousel = ({
       <FaArrowCircleLeft
         className={rightButton.css}
         onClick={slideLeft}
-        style={{ color: `${buttonColor}` }}
+        style={{ color: `${buttonColor}`, right: `${buttonSpacing * -1}` }}
       />
     </div>
   );

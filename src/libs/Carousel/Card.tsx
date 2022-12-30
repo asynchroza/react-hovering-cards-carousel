@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Event, Article, Custom } from "./card_definitions";
 import { IoLogoFacebook as Facebook } from "react-icons/io";
 import { HiLocationMarker as Location } from "react-icons/hi";
+import { BsMedium as Medium } from "react-icons/bs";
 
 type Props = {
   prop: Event | Article | Custom;
@@ -85,14 +86,13 @@ export const Card = ({ prop, upcomingEventLabel }: Props) => {
       >
         <div className={overlay}>
           <h3>{prop.title}</h3>
-          <div className="overlay-icons-container">
-            <Facebook
-              className="card-overlay-icons"
-              onClick={() => {
-                redirect(prop.link);
-              }}
-            />
-          </div>
+          <p>{"Written by " + prop.author}</p>
+          <Medium
+            className="card-overlay-icons"
+            onClick={() => {
+              redirect(prop.link);
+            }}
+          />
         </div>
         <img src={prop.image} className="card-images" />
       </div>
@@ -106,10 +106,8 @@ export const Card = ({ prop, upcomingEventLabel }: Props) => {
         onMouseEnter={setOverlayAsVisible}
         onMouseLeave={setOverlayAsHidden}
       >
-        <div className={overlay}>
-          {prop.children}
-        </div>
-        <img src={prop.image} className="card-images"/>
+        <div className={overlay}>{prop.children}</div>
+        <img src={prop.image} className="card-images" />
       </div>
     );
   }

@@ -92,6 +92,8 @@ function TestCarousel() {
           color: "black",
         }}
         scale={1.25}
+        buttonColor={"yellow"}
+        buttonSpacing={20}
       />
       <Carousel cards={articles}/>
       <Carousel cards={customArr}/>
