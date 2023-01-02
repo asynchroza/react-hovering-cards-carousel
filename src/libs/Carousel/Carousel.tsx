@@ -12,7 +12,7 @@ type Props = {
   buttonColor?: string;
   buttonSpacing?: number;
   reloadOnResize?: boolean;
-  scale?: number,
+  scale?: number;
   upcomingEventLabel?: {
     text: string;
     backgroundColor: string;
@@ -33,7 +33,6 @@ export const Carousel = ({
   reloadOnResize = true,
   scale = 1,
 }: Props) => {
-
   /*
     This is needed so that the buttons can show up on mobile versions when
     screen is resized and vice-versa. Otherwise the state doesn't recognize
@@ -53,22 +52,22 @@ export const Carousel = ({
   const [cardsLength, setCardsLength] = useState(cards.length);
   const [animation, setAnimation] = useState("none");
 
-  const isDesktop = useMediaQuery({ query: "(min-width: 1000px)" });
+  const isDesktop = useMediaQuery({ query: `(min-width: ${1000 + (scale % 1 * 1000)}px)` });
 
   const mainContainer = {
     justifyContent: "center",
-    transform: `scale(${scale})`
-  }
+    transform: `scale(${isDesktop ? scale : 1})`,
+  };
 
   const getContainerStyle = () => {
     if (cards.length <= 3 && isDesktop) {
       return {
         width: `calc(${-SLIDING_PIXELS * cards.length})`,
-        ...mainContainer
+        ...mainContainer,
       };
     } else {
       return {
-        ...mainContainer
+        ...mainContainer,
       };
     }
   };
