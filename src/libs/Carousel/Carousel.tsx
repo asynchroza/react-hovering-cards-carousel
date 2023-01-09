@@ -33,17 +33,20 @@ export const Carousel = ({
   reloadOnResize = true,
   scale = 1,
 }: Props) => {
-  /*
-    This is needed so that the buttons can show up on mobile versions when
-    screen is resized and vice-versa. Otherwise the state doesn't recognize
-    that there are hidden (desktop -> mobile)/not enough (mobile -> desktop) cards. 
-    Component should be reinitialized. 
+  const isDesktop = useMediaQuery({
+    query: `(min-width: ${1000 + (scale % 1) * 1000}px)`,
+  });
 
-    You could disable the reload if you're sure that your arrays always contain at least 5 items.
+  const [prevIsDesktop, setPrevIsDesktop] = useState(isDesktop);
+
+  /*
+    We need to force a reload when swapping resolution because otherwise
+    the Carousel doesn't load the button logic for the Mobile version or vice verse
   */
 
   window.onresize = function () {
-    if (reloadOnResize) {
+    if (isDesktop != prevIsDesktop && reloadOnResize) {
+      setPrevIsDesktop(isDesktop);
       location.reload();
     }
   };
@@ -51,8 +54,6 @@ export const Carousel = ({
   const [position, setPosition] = useState(0);
   const [cardsLength, setCardsLength] = useState(cards.length);
   const [animation, setAnimation] = useState("none");
-
-  const isDesktop = useMediaQuery({ query: `(min-width: ${1000 + (scale % 1 * 1000)}px)` });
 
   const mainContainer = {
     justifyContent: "center",
