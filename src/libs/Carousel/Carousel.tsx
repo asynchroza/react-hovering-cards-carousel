@@ -49,8 +49,7 @@ export const Carousel = ({
   */
 
   window.onresize = function () {
-    if(!prevResIsHybrid || !isHybrid){
-      setPrevResIsHybrid(!prevResIsHybrid)
+    if(isHybrid != prevResIsHybrid){
       location.reload()
     }
   };
