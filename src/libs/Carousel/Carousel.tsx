@@ -37,7 +37,11 @@ export const Carousel = ({
     query: `(min-width: ${1000 + (scale % 1) * 1000}px)`,
   });
 
-  const [prevIsDesktop, setPrevIsDesktop] = useState(isDesktop);
+  const isHybrid = useMediaQuery({
+    query: `(min-width: 1000px)`
+  })
+
+  const [prevResIsHybrid, setPrevResIsHybrid] = useState(isHybrid)
 
   /*
     We need to force a reload when swapping resolution because otherwise
@@ -45,9 +49,9 @@ export const Carousel = ({
   */
 
   window.onresize = function () {
-    if (isDesktop != prevIsDesktop && reloadOnResize) {
-      setPrevIsDesktop(isDesktop);
-      location.reload();
+    if(!prevResIsHybrid || !isHybrid){
+      setPrevResIsHybrid(!prevResIsHybrid)
+      location.reload()
     }
   };
 
@@ -76,7 +80,7 @@ export const Carousel = ({
   const [currentIndex, setCurrentIndex] = useState(isDesktop ? 3 : 0); // starts with 4 images
 
   const isButtonVisible: boolean =
-    (isDesktop && cards.length <= 4) || (!isDesktop && cards.length <= 1);
+    ((isDesktop || isHybrid) && cards.length <= 4) || (!isHybrid && cards.length <= 1);
 
   const [leftButton, setLeftButton] = useState({
     css: isButtonVisible ? "hidden" : "arrow disabled",

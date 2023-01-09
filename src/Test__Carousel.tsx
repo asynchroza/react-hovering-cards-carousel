@@ -84,7 +84,7 @@ function TestCarousel() {
 
   return (
     <div className="App">
-      <Carousel
+      {/* <Carousel
         cards={events}
         upcomingEventLabel={{
           text: "Upcoming",
@@ -94,9 +94,9 @@ function TestCarousel() {
         scale={1.25}
         buttonColor={"yellow"}
         buttonSpacing={20}
-      />
-      <Carousel cards={articles}/>
-      <Carousel cards={customArr}/>
+      /> */}
+      <Carousel cards={articles} scale={1.5}/>
+      {/* <Carousel cards={customArr}/> */}
     </div>
   );
 }
