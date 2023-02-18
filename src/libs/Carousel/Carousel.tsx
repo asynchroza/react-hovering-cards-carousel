@@ -173,8 +173,6 @@ export const Carousel = ({
   if (cards.length === 0) return null;
 
 
-  console.log(document.getElementsByClassName("arrow right"))
-
   return (
     <div className="carousel-container" style={getContainerStyle()}>
       <FaArrowCircleLeft
