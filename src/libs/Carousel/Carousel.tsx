@@ -172,12 +172,15 @@ export const Carousel = ({
 
   if (cards.length === 0) return null;
 
+
+  console.log(document.getElementsByClassName("arrow right"))
+
   return (
     <div className="carousel-container" style={getContainerStyle()}>
       <FaArrowCircleLeft
         className={leftButton.css}
         onClick={slideRight}
-        style={{ color: `${buttonColor}`, left: `${buttonSpacing * -1}` }}
+        style={{ color: buttonColor, left: buttonSpacing * -1 }}
       />
       <div className="carousel-map">
         <div
@@ -197,7 +200,7 @@ export const Carousel = ({
       <FaArrowCircleLeft
         className={rightButton.css}
         onClick={slideLeft}
-        style={{ color: `${buttonColor}`, right: `${buttonSpacing * -1}` }}
+        style={{ color: buttonColor, right: buttonSpacing * -1 }}
       />
     </div>
   );
